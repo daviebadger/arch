@@ -33,14 +33,14 @@ EFI_PARTITION="${DISK}1"
 
 mkfs.fat -F 32 "${EFI_PARTITION}"
 
-ROOT_PARTITION="${DISK}3"
-
-mkfs.ext4 "${ROOT_PARTITION}"
-
 SWAP_PARTITION="${DISK}2"
 
 mkswap "${SWAP_PARTITION}"
 swapon "${SWAP_PARTITION}"
+
+ROOT_PARTITION="${DISK}3"
+
+mkfs.ext4 "${ROOT_PARTITION}"
 
 mount "${ROOT_PARTITION}" /mnt
 mkdir -p /mnt/boot/efi
