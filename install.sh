@@ -29,6 +29,10 @@ for parted_command in "${PARTED_COMMANDS[@]}"; do
   parted --script "${DISK}" "${parted_command}"
 done
 
+EFI_PARTITION="${DISK}1"
+
+mkfs.fat -F 32 "${EFI_PARTITION}"
+
 ROOT_PARTITION="${DISK}3"
 
 mkfs.ext4 "${ROOT_PARTITION}"
