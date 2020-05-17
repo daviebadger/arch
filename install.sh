@@ -28,3 +28,12 @@ PARTED_COMMANDS=(
 for parted_command in "${PARTED_COMMANDS[@]}"; do
   parted --script "${DISK}" "${parted_command}"
 done
+
+ROOT_PARTITION="${DISK}3"
+
+mkfs.ext4 "${ROOT_PARTITION}"
+
+SWAP_PARTITION="${DISK}2"
+
+mkswap "${SWAP_PARTITION}"
+swapon "${SWAP_PARTITION}"
