@@ -43,5 +43,5 @@ ROOT_PARTITION="${DISK}3"
 mkfs.ext4 "${ROOT_PARTITION}"
 
 mount "${ROOT_PARTITION}" /mnt
-mkdir -p /mnt/boot/efi
-mount "${EFI_PARTITION}" /mnt/boot/efi
+mkdir /mnt/efi
+mount "${EFI_PARTITION}" /mnt/efi
