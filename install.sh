@@ -50,7 +50,5 @@ pacstrap /mnt base base-devel linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt
-
-ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
-hwclock --systohc
+wget https://raw.githubusercontent.com/daviebadger/arch/master/chroot.sh
+arch-chroot /mnt ./chroot.sh
