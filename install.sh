@@ -45,3 +45,5 @@ mkfs.ext4 "${ROOT_PARTITION}"
 mount "${ROOT_PARTITION}" /mnt
 mkdir /mnt/efi
 mount "${EFI_PARTITION}" /mnt/efi
+
+pacstrap /mnt base base-devel linux linux-firmware
