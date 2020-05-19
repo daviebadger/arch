@@ -50,5 +50,8 @@ pacstrap /mnt base base-devel linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-wget https://raw.githubusercontent.com/daviebadger/arch/master/chroot.sh
+wget --directory-prefix=/mnt https://raw.githubusercontent.com/daviebadger/arch/master/chroot.sh
+
+arch-chroot chmod +x chroot.sh
 arch-chroot /mnt ./chroot.sh
+arch-chroot rm chroot.sh
