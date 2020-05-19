@@ -47,3 +47,7 @@ mkdir /mnt/efi
 mount "${EFI_PARTITION}" /mnt/efi
 
 pacstrap /mnt base base-devel linux linux-firmware
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot /mnt
