@@ -27,3 +27,15 @@ cat << EOF > /etc/vconsole.conf
 FONT=eurlatgr
 KEYMAP=cz
 EOF
+
+HOSTNAME="badger"
+
+echo "${HOSTNAME}" > /etc/hostname
+echo >> /etc/hosts
+
+cat << EOF >> /etc/hosts
+127.0.0.1	localhost
+127.0.1.1	$HOSTNAME.localdomain	$HOSTNAME
+
+::1		    localhost
+EOF
