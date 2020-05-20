@@ -39,3 +39,6 @@ cat << EOF >> /etc/hosts
 
 ::1		    localhost
 EOF
+
+pacman -S dhcpcd
+systemctl enable dhcpcd
