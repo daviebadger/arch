@@ -42,3 +42,5 @@ EOF
 
 pacman -S dhcpcd
 systemctl enable dhcpcd
+
+passwd root
