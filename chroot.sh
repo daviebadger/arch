@@ -43,4 +43,9 @@ EOF
 pacman -S dhcpcd
 systemctl enable dhcpcd
 
-passwd root
+passwd
+
+USER="davie"
+
+useradd --create-home "${USER}"
+passwd "${USER}"
