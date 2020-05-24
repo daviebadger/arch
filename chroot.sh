@@ -40,7 +40,7 @@ cat << EOF >> /etc/hosts
 ::1		    localhost
 EOF
 
-pacman -S dhcpcd
+pacman -S --noconfirm dhcpcd
 systemctl enable dhcpcd
 
 passwd
@@ -50,3 +50,7 @@ USER="davie"
 useradd --create-home "${USER}"
 passwd "${USER}"
 usermod -aG audio,optical,storage,video,wheel "${USER}"
+
+pacman -S --noconfirm sudo
+sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/" /etc/sudoers
+visudo -cf /etc/sudoers
