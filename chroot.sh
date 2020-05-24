@@ -49,3 +49,4 @@ USER="davie"
 
 useradd --create-home "${USER}"
 passwd "${USER}"
+usermod -aG audio,optical,storage,video,wheel "${USER}"
