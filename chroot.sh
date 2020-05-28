@@ -54,3 +54,7 @@ usermod --append --groups=audio,optical,storage,video,wheel "${USER}"
 pacman -S --noconfirm sudo
 sed --in-place "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/" /etc/sudoers
 visudo --check --file=/etc/sudoers
+
+pacman -S --noconfirm efibootmgr grub
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+grub-mkconfig --output=/boot/grub/grub.cfg
