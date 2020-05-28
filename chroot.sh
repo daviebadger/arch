@@ -2,11 +2,11 @@
 #
 # Install the system.
 
-ln -sf /usr/share/zoneinfo/Europe/Prague /etc/localtime
+ln --force --symbolic /usr/share/zoneinfo/Europe/Prague /etc/localtime
 hwclock --systohc
 
-sed -i "s/#cs_CZ.UTF-8/cs_CZ.UTF-8/" /etc/locale.gen
-sed -i "s/#en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen
+sed --in-place "s/#cs_CZ.UTF-8/cs_CZ.UTF-8/" /etc/locale.gen
+sed --in-place "s/#en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen
 
 locale-gen
 
@@ -49,8 +49,8 @@ USER="davie"
 
 useradd --create-home "${USER}"
 passwd "${USER}"
-usermod -aG audio,optical,storage,video,wheel "${USER}"
+usermod --append --groups=audio,optical,storage,video,wheel "${USER}"
 
 pacman -S --noconfirm sudo
-sed -i "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/" /etc/sudoers
-visudo -cf /etc/sudoers
+sed --in-place "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/" /etc/sudoers
+visudo --check --file=/etc/sudoers
