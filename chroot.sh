@@ -56,5 +56,14 @@ sed --in-place "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/" /etc/sudoers
 visudo --check --file=/etc/sudoers
 
 pacman -S --noconfirm efibootmgr grub
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+
+if [ -d /efi ]; then
+  pacman -S --noconfirm efibootmgr
+  grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+else
+  DISK="/dev/$(lsblk | awk '/disk/ {print $1}')"
+
+  grub-install "${DISK}"
+fi
+
 grub-mkconfig --output=/boot/grub/grub.cfg
