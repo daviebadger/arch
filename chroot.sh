@@ -55,7 +55,7 @@ pacman -S --noconfirm sudo
 sed --in-place "s/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/" /etc/sudoers
 visudo --check --file=/etc/sudoers
 
-pacman -S --noconfirm efibootmgr grub
+pacman -S --noconfirm grub
 
 if [ -d /efi ]; then
   pacman -S --noconfirm efibootmgr
