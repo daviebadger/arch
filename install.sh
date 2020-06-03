@@ -83,6 +83,6 @@ arch-chroot /mnt chmod +x chroot.sh
 arch-chroot /mnt ./chroot.sh
 arch-chroot /mnt rm chroot.sh
 
-# umount --recursive /mnt
-#
-# reboot
+umount --recursive /mnt
+
+reboot
